@@ -1,3 +1,7 @@
+# Simulation of branching process 
+# This is only used to make the tree in Figure 1 and none of the scientific conclusions rely on it. 
+
+
 """
     Cell{T}
 
@@ -36,6 +40,27 @@ function create_cell(label, left=nothing, right=nothing)
     return Cell(label, left, right)
 end
 
+
+function makelineage(generator,init,n,params,labels)
+    cells = [generator(init, params)]
+    for _ in 2:n
+        push!(cells,generator(cells[end],params))
+    end
+    
+    df = DataFrame(hcat([c for c in cells]...)',labels)
+    df[:,:n] = cumsum(1:length(df[:,1]))
+    df
+end
+
+
+
+
+
+# ------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------
+# POPULATION GROWTH SIMULATIONS
+# ------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------
 """
     grow_tree!(cell, terminate, params, generator)
 
@@ -50,8 +75,8 @@ Recursively grow a tree from a single root cell.
 
 """
 function grow_tree!(cell, terminate, params, generator)
-    L = generator(cell.label[end, :], params)
-    R = generator(cell.label[end, :], params)
+    L = generator(cell.label, params)
+    R = generator(cell.label, params)
     if terminate(cell) == false
         cell.left = create_cell(L)
         cell.right = create_cell(R)
@@ -59,6 +84,7 @@ function grow_tree!(cell, terminate, params, generator)
         grow_tree!(cell.right, terminate, params, generator)
     end
 end
+
 
 """
     grow_forest!(nodes, terminate, params, dist)
