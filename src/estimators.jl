@@ -20,6 +20,7 @@ end
 # # estimators
 
 function scalingdata_FDE(df::DataFrame,sizes::Vector{Int64})
+
     αs = []
     FDEs = []
     Ms = []
