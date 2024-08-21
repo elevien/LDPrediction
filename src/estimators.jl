@@ -5,6 +5,7 @@
 function FDE(T::Vector{Float64},n::Int64)
     μ = mean(T)
     dT = T .- μ
+    n = n
     f(x) = log(mean(exp.(-dT .* x)))/n .- x .* μ ./n .+log(2)
     sol = nlsolve(f, [0.69])
     return sol.zero[1]
@@ -13,6 +14,7 @@ end
 
 function FTE(N::Vector{Int64},t::Float64)
     μ = mean(N)
+    dN = N .- μ
     return log(mean(exp.(dN .* log(2))))/t .+ μ*log(2)/t
 end
 
