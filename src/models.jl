@@ -21,3 +21,23 @@ function CSC(prev::Vector{Float64},θ)
     time = tau_prev + birth_prev
     return [time,size,growth,tau]
 end
+
+
+
+function fitar(y)
+    L = length(y[:,1])
+    X = hcat(ones(L-1),y[1:L-1,:])
+    b = X\y[2:end,:]
+    v = mean((y[2:end,:] .- X*b).^2,dims=1)'
+    return θ = (b = Matrix(b),v = Matrix(v))
+end
+
+function runar(y0,θ,n)
+    n_vars = length(y0)
+    yp = zeros((n,n_vars))
+    yp[1,:] = y0
+    for k in 2:n
+        yp[k,:] = θ.b' * vcat(1,yp[k-1,:]) .+ rand(MvNormal(zeros(n_vars),diagm(θ.v[:,1])))
+    end
+    return yp
+end
