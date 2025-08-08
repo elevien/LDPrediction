@@ -1,0 +1,18 @@
+*/output
+
+# Python
+__pycache__/
+*.py[cod]
+*.ipynb_checkpoints/
+
+# Conda
+.env/
+.venv/
+.CondaPkg/
+*.conda
+*.env
+*.egg-info/
+*.DS_Store
+
+# Jupyter
+.ipynb_checkpoints/

@@ -1,0 +1,13 @@
+[deps]
+CSV = "336ed68f-0bac-5ca0-87d4-7b16caf5d00b"
+DataFrames = "a93c6f00-e57d-5684-b7b6-d8193f3e46c0"
+Distributions = "31c24e10-a181-5473-b8eb-7969acd0382f"
+NLsolve = "2774e3e8-f4cf-5e23-947b-6d7e65073b56"
+Optim = "429524aa-4258-5aef-a3af-852621145aeb"
+ParameterHandling = "2412ca09-6db7-441c-8e3a-88d5709968c5"
+ProgressBars = "49802e3a-d2f1-5c88-81d8-b72133a6f568"
+PythonPlot = "274fc56d-3b97-40fa-a1cd-1b4a50311bf9"
+Revise = "295af30f-e4ad-537b-8983-00126c2a3abe"
+Setfield = "efcf1570-3423-57d1-acb7-fd33fddbac46"
+StatsBase = "2913bbd2-ae8a-5f71-8c99-4fb6c76f3a91"
+Turing = "fce5fe82-541a-59a6-adf8-730c64b5f9a0"
